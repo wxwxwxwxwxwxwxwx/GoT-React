@@ -1,4 +1,4 @@
-export default class GotServise {
+export default class GotServiee {
     constructor() {
         this._apiBase = 'https://www.anapioficeandfire.com/api'
     }
@@ -49,6 +49,9 @@ export default class GotServise {
         //         char.culture = 'no data :('
         //         break
         // }
+        if (char.name === '') {
+            char.name = 'no data :(' 
+        }
         if (char.gender === '') {
             char.gender = 'no data :(' 
         }
