@@ -1,9 +1,11 @@
+// import { ThemeConsumer } from "styled-components";
+
 export default class GotServiee {
     constructor() {
         this._apiBase = 'https://www.anapioficeandfire.com/api'
     }
 
-    async getResource(url) {
+    getResource = async (url) => {
         const result = await fetch(`${this._apiBase}${url}`);
     
         if(!result.ok) {
@@ -13,42 +15,32 @@ export default class GotServiee {
         return await result.json();
     }
 
-    async getAllCharacters() {
+    getAllCharacters = async () => {
         const res = await this.getResource('/characters?page=5&pageSize=10');
         return res.map(this._transformCharacter);
     }
-    async getCharacter(id) {
+    getCharacter = async (id) => {
         const character = await this.getResource(`/characters/${id}`);
         return this._transformCharacter(character);
     }
-    getAllBooks() {
-        return this.getResource(`/books/`);
+    getAllBooks = async () => {
+        const res = await this.getResource(`/books/`)
+        return res.map(this._transformBook);
     }
-    getBooks(id) {
-        return this.getResource(`/books/${id}`);
+    getBook = async (id) => {
+        const book = await this.getResource(`/books/${id}/`);
+        return this.getResource(book);
     }
-    getAllHouses() {
-        return this.getResource(`/houses/`);
+    getAllHouses = async () => {
+        const res = await this.getResource(`/houses/`)
+        return res.map(this._transformHouse);
     }
-    getHouses(id) {
-        return this.getResource(`/houses/${id}`);
+    getHouse = async (id) => {
+        const house = await this.getResource(`/houses/${id}`);
+        return this._transformCharacter(house);
     }
 
     _transformCharacter(char) {
-        // switch (char) {
-        //     case (char.gender === ''):
-        //         char.gender = 'no data :('
-        //         break
-        //     case (char.born === ''):
-        //         char.born = 'no data :(' 
-        //         break
-        //     case (char.died === ''):
-        //         char.died = 'no data :('
-        //         break
-        //     case (char.culture === ''):
-        //         char.culture = 'no data :('
-        //         break
-        // }
         if (char.name === '') {
             char.name = 'no data :(' 
         }
@@ -71,7 +63,6 @@ export default class GotServiee {
             died: char.died,
             culture: char.culture
         }
-
     }
 
     _transformHouse(house) {
