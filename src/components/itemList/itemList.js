@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './itemList.css';
 import Spinner from '../spinner';
+import ErrorMessage from '../errorMessage';
 export default class ItemList extends Component {
 
     state = {
@@ -26,7 +27,7 @@ export default class ItemList extends Component {
                 <li
                     key={i} 
                     className="list-group-item"
-                    onClick={() => this.props.onCharSelected(41 + i)}>
+                    onClick={() => this.props.onItemSelected(41 + i)}>
                     {label}
                 </li>
             )
@@ -36,6 +37,10 @@ export default class ItemList extends Component {
     render() {
 
         const {itemList} = this.state;
+
+        if (this.state.error) {
+            return <ErrorMessage/>
+        }
         
         if (!itemList) {
             return <Spinner/>
