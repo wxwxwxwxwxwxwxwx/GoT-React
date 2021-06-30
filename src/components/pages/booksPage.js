@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ItemList from '../itemList';
 import ErrorMessage from '../errorMessage';
 import gotService from '../../services/gotService';
+import {withRouter} from 'react-router-dom';
 
 export class BooksPage extends Component {
     gotService = new gotService();
@@ -38,4 +39,4 @@ export class BooksPage extends Component {
         )
     }
 }
-export default BooksPage;
+export default withRouter(BooksPage);
