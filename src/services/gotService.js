@@ -77,6 +77,18 @@ export default class GotServiee {
     }
 
     _transformBook(book) {
+        if (book.name === '') {
+            book.name = 'no data :(' 
+        }
+        if (book.numberOfPages === '') {
+            book.numberOfPages = 'no data :(' 
+        }
+        if (book.publiser === '') {
+            book.publiser = 'no data :(' 
+        }
+        if (book.released === '') {
+            book.released = 'no data :(' 
+        }
         return {
             name: book.name,
             numberOfPages: book.numberOfPages,
