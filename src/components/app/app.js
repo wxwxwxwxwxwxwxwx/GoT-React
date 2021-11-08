@@ -6,40 +6,22 @@ import Header from '../header/header';
 import RandomChar from '../randomChar/randomChar';
 import ErrorMessage from '../errorMessage/errorMessage';
 import {CharacterPage, BooksPage, HousesPage, BooksItem} from '../pages';
-import gotService from '../../services/gotService';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './app.css';
-
-// const gotService = gotService();
 
 const App = () => {
 
     const [showRandomChar, setShowRandomChar] = useState(true);
     const [error, setError] = useState(false);
-    const [selectedHouse, setSelectedHouse] = useState(20);
-
-
-    // state = {
-    //     showRandomChar: true,
-    //     error: false,
-    //     selectedHouse: 20
-    // };
+    // const [selectedHouse, setSelectedHouse] = useState(20);
 
     useEffect(() => {
         setError(true);
-    }, []);
-
-    // componentDidCatch() {
-    //     console.log('error');
-    //     this.setState({
-    //         error: true
-    //     })
-    // }
+    }, [error]);
     
-
     function toggleRandomChar() {
-        setShowRandomChar(showRandomChar === !showRandomChar)
-    };
+        setShowRandomChar(showRandomChar => !showRandomChar)
+    }
     
     const char = showRandomChar ? <RandomChar/> : null;
 
@@ -59,7 +41,7 @@ const App = () => {
                         {char}
                         <button 
                             className="toggle-btn"
-                            onClick={toggleRandomChar()}>Toggle random character</button>
+                            onClick={toggleRandomChar}>Toggle random character</button>
                         </Col>
                     </Row>
                     <Route path='/' component={() => <h1>Choose characters/houses/book, please</h1>} exact/>
