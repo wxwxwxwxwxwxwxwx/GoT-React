@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './itemList.css';
-import Spinner from '../spinner';
-import ErrorMessage from '../errorMessage';
+import Spinner from '../spinner/spinner';
+import ErrorMessage from '../errorMessage/errorMessage';
 export default class ItemList extends Component {
 
     state = {

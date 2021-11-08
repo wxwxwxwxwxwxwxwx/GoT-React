@@ -5,4 +5,4 @@ const ErrorMessage = () => {
     return <span className='error'>Something goes wrong</span>
 }
 
-export default ErrorMessage
+export default ErrorMessage;

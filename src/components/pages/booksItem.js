@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import gotService from '../../services/gotService';
-import ItemDetails, {Field} from '../itemDetails';
+import ItemDetails from '../itemDetails/itemDetails';
+import Field from '../itemDetails/field';
 
 export default class BooksItem extends Component {
     gotService = new gotService();

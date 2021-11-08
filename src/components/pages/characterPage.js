@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import ItemList from '../itemList';
-import ItemDetails, {Field} from '../itemDetails';
-import ErrorMessage from '../errorMessage';
+import ItemList from '../itemList/itemList';
+import ItemDetails from '../itemDetails/itemDetails';
+import Field from '../itemDetails/field';
+import ErrorMessage from '../errorMessage/errorMessage';
 import gotService from '../../services/gotService';
-import RowBlock from '../rowBlock';
+import RowBlock from '../rowBlock/rowBlock';
 
 export default class CharacterPage extends Component {
     gotService = new gotService();
