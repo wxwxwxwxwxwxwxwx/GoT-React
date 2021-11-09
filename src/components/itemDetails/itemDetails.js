@@ -7,8 +7,6 @@ const ItemDetails = (props) => {
 
     const [item, setItem] = useState(null);
     const [prevProps] = useState(props);
-    const [id, setId] = useState(props.itemId);
-    // const [data, setData] = useState(props.getData);
 
 
     useEffect(() => {
@@ -16,31 +14,27 @@ const ItemDetails = (props) => {
     }, []);
 
     useEffect(() => {
-        // if (itemId !== prevProps.itemId) {
-        //     updateItem();
-        // }
-        if (id !== prevProps.id) {
+        
+        const {itemId} = props;
+
+        if (itemId !== prevProps.itemId) {
             updateItem();
         }
     });
 
     const updateItem = () => {
-        // if (!itemId) {
-        //     return;
-        // }
-        if (!id) {
+
+        const {getData, itemId} = props;
+
+        if (!itemId) {
             return;
         }
 
-        // const gotData = setData(id)
-        //     .then((data) => {
-        //         setItem({data})
-        //     })
+        getData(itemId)
+            .then((data) => {
+                setItem(data);
+            })
 
-        // getData(itemId)
-        //     .then((data) => {
-        //         setItem({data});
-        //     })
     }
 
 
@@ -55,7 +49,7 @@ const ItemDetails = (props) => {
             <h4>{name}</h4>
             <ul className="list-group list-group-flush">
                 {
-                    React.Children.map(this.props.children, (child) => {
+                    React.Children.map(props.children, (child) => {
                         return React.cloneElement(child, {item})
                     })
                 }

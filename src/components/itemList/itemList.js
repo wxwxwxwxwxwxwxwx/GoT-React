@@ -10,17 +10,6 @@ const ItemList = (props) => {
     const [itemList, setItemList] = useState(null);
     const [error, setError] = useState(false);
 
-    // componentDidMount() {
-    //     const {getData} = this.props;
-
-    //     getData()
-    //         .then(itemList => {
-    //             this.setState({
-    //                 itemList
-    //             });
-    //         })
-    // }
-
     useEffect(() => {
         const {getData} = props;
 

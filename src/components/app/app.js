@@ -13,13 +13,12 @@ const App = () => {
 
     const [showRandomChar, setShowRandomChar] = useState(true);
     const [error, setError] = useState(false);
-    // const [selectedHouse, setSelectedHouse] = useState(20);
 
     useEffect(() => {
         setError(true);
     }, [error]);
     
-    function toggleRandomChar() {
+    const toggleRandomChar = () => {
         setShowRandomChar(showRandomChar => !showRandomChar)
     }
     
