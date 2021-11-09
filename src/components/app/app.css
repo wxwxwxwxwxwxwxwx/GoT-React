@@ -13,3 +13,9 @@
 h1 {
     color: #fff;
 }
+.app {
+    background-image: url('../../static/got.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
