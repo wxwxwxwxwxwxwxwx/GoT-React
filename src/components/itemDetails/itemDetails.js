@@ -6,29 +6,38 @@ import './itemDetails.css';
 const ItemDetails = (props) => {
 
     const [item, setItem] = useState(null);
-    const [itemId, getData] = useState(props);
     const [prevProps] = useState(props);
-    const [data, setData] = useState(props);
+    const [id, setId] = useState(props.itemId);
+    const [data, setData] = useState(props.getData);
+
 
     useEffect(() => {
         updateItem();
     }, []);
 
     useEffect(() => {
-        if (itemId !== prevProps.itemId) {
-            updateItem();
-        }
+        // if (itemId !== prevProps.itemId) {
+        //     updateItem();
+        // }
+        // if (id !== prevProps.id) {
+        //     updateItem();
+        // }
     });
 
-    function updateItem() {
-        if (!itemId) {
+    const updateItem = () => {
+        // if (!itemId) {
+        //     return;
+        // }
+        if (!id) {
             return;
         }
 
-        getData(itemId)
-            .then((data) => {
-                setItem({data});
-            })
+        const gotData = setData(id)
+
+        // getData(itemId)
+        //     .then((data) => {
+        //         setItem({data});
+        //     })
     }
 
 
