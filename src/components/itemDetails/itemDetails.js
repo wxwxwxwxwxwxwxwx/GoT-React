@@ -8,7 +8,7 @@ const ItemDetails = (props) => {
     const [item, setItem] = useState(null);
     const [prevProps] = useState(props);
     const [id, setId] = useState(props.itemId);
-    const [data, setData] = useState(props.getData);
+    // const [data, setData] = useState(props.getData);
 
 
     useEffect(() => {
@@ -19,9 +19,9 @@ const ItemDetails = (props) => {
         // if (itemId !== prevProps.itemId) {
         //     updateItem();
         // }
-        // if (id !== prevProps.id) {
-        //     updateItem();
-        // }
+        if (id !== prevProps.id) {
+            updateItem();
+        }
     });
 
     const updateItem = () => {
@@ -32,7 +32,10 @@ const ItemDetails = (props) => {
             return;
         }
 
-        const gotData = setData(id)
+        // const gotData = setData(id)
+        //     .then((data) => {
+        //         setItem({data})
+        //     })
 
         // getData(itemId)
         //     .then((data) => {
