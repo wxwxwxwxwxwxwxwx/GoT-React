@@ -6,8 +6,6 @@ import './itemDetails.css';
 const ItemDetails = (props) => {
 
     const [item, setItem] = useState(null);
-    const [prevProps] = useState(props);
-
 
     useEffect(() => {
         updateItem();
