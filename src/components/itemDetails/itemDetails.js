@@ -14,13 +14,8 @@ const ItemDetails = (props) => {
     }, []);
 
     useEffect(() => {
-        
-        const {itemId} = props;
-
-        if (itemId !== prevProps.itemId) {
-            updateItem();
-        }
-    });
+        updateItem();
+    }, [props.itemId]);
 
     const updateItem = () => {
 
@@ -34,7 +29,6 @@ const ItemDetails = (props) => {
             .then((data) => {
                 setItem(data);
             })
-
     }
 
 
