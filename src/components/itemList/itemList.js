@@ -1,57 +1,65 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './itemList.css';
 import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMessage/errorMessage';
-export default class ItemList extends Component {
 
-    state = {
-        itemList: null
-    }
+import {useState, useEffect} from 'react';
 
-    componentDidMount() {
-        const {getData} = this.props;
+const ItemList = (props) => {
+
+    const [itemList, setItemList] = useState(null);
+    const [error, setError] = useState(false);
+
+    // componentDidMount() {
+    //     const {getData} = this.props;
+
+    //     getData()
+    //         .then(itemList => {
+    //             this.setState({
+    //                 itemList
+    //             });
+    //         })
+    // }
+
+    useEffect(() => {
+        const {getData} = props;
 
         getData()
             .then(itemList => {
-                this.setState({
-                    itemList
-                });
+                setItemList(itemList);
             })
-    }
+    }, [])
 
-    renderItems(arr) {
+    const renderItems = (arr) => {
         return arr.map((item, i) => {
-            const label = this.props.renderItem(item)
+            const label = props.renderItem(item)
 
             return (
                 <li
                     key={i} 
                     className="list-group-item"
-                    onClick={() => this.props.onItemSelected(41 + i)}>
+                    onClick={() => props.onItemSelected(41 + i)}>
                     {label}
                 </li>
             )
         })
     }
 
-    render() {
-
-        const {itemList} = this.state;
-
-        if (this.state.error) {
-            return <ErrorMessage/>
-        }
-        
-        if (!itemList) {
-            return <Spinner/>
-        }
-
-        const items = this.renderItems(itemList);
-
-        return (
-            <ul className="item-list list-group">
-                {items}
-            </ul>
-        );
+    if (error) {
+        return <ErrorMessage/>
     }
+    
+    if (!itemList) {
+        return <Spinner/>
+    }
+
+    const items = renderItems(itemList);
+
+    return (
+        <ul className="item-list list-group">
+            {items}
+        </ul>
+    );
 }
+
+export default ItemList;

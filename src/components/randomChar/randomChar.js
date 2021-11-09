@@ -14,38 +14,16 @@ const RandomChar = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    // state = {
-    //     char: {},
-    //     loading: true,
-    //     error: false
-    // }
-
     useEffect(() => {
         updateChar();
     }, [])
 
-    // componentDidMount() {
-    //     this.updateChar();
-    // }
-
-    // componentWillUnmount() {
-    //     clearInterval(this.timerId);
-    // }
-
     const onCharLoaded = (char) => {
-        // this.setState({
-        //     char,
-        //     loading: false
-        // });
         setChar(char);
         setLoading(false);
     }
 
-    const onError = (err) => {
-        // this.setState({
-        //     error: true,
-        //     loading: false
-        // })
+    const onError = () => {
         setError(true)
         setLoading(false)
     }
@@ -55,12 +33,7 @@ const RandomChar = () => {
         gotService.getCharacter(id)
             .then(onCharLoaded)
             .catch(onError)
-        // this.gotService.getCharacter(id)
-        //     .then(this.onCharLoaded)
-        //     .catch(this.onError)
     }
-
-    // const {char, loading, error} = this.state;
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
