@@ -27,7 +27,8 @@ const CharacterPage = () => {
             <ItemList 
                 onItemSelected={onItemSelected}
                 getData={gotService.getAllCharacters}
-                renderItem={({name, gender}) => `${name} (${gender})`}/>
+                renderItem={({name, gender}) => `${name} (${gender})`}
+                bookOrHouse={false}/>
         )
 
         const itemDetails = (

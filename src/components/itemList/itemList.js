@@ -22,12 +22,21 @@ const ItemList = (props) => {
     const renderItems = (arr) => {
         return arr.map((item, i) => {
             const label = props.renderItem(item)
+            const bookOrHouse = props.bookOrHouse;
 
             return (
                 <li
                     key={i} 
                     className="list-group-item"
-                    onClick={() => props.onItemSelected(41 + i)}>
+                    onClick={
+                        bookOrHouse === false
+                        ? 
+                        () => props.onItemSelected(41 + i)
+                        :
+                        () => props.onItemSelected(1 + i)
+                    }>
+                    {/* onClick={() => props.onItemSelected(41 + i)}>
+                    onClick={() => props.onItemSelected(1 + i)}> */}
                     {label}
                 </li>
             )
