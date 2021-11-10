@@ -43,7 +43,7 @@ const App = () => {
                             onClick={toggleRandomChar}>Toggle random character</button>
                         </Col>
                     </Row>
-                    <Route path='/' component={() => <h1>Choose characters/houses/book, please</h1>} exact/>
+                    <Route path='/' component={() => <div className='title'>Choose characters/houses/book, please</div>} exact/>
                     <Route path='/characters' component={CharacterPage} />
                     <Route path='/books' component={BooksPage} exact/>
                     <Route path='/books/:id' render={({match}) => {

@@ -20,7 +20,23 @@
 }
 
 li {
+    font-weight: 400;
     margin-right: 20px;
     font-size: 18px;
+    position: relative;
+}
+
+.header-list li:before {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    transform: translateY(33px);
+    transition: .3s all;
+}
+
+.header-list li:hover:before {
+    width: 100%;
 }
 

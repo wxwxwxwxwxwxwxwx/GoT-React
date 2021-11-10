@@ -10,9 +10,16 @@
 }
 
 .select-error {
-    color: #fff;
-    text-align: center;
-    font-size: 26px;
+    border-radius: 0.25rem;
+    color: #212529;
+    font-weight: 500;
+    font-size: 1.5rem;
+    display: flex;
+    width: 380px;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    height: 70px;
 }
 
 .t-right {

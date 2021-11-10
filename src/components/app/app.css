@@ -10,9 +10,19 @@
     margin-bottom: 40px;
 }
 
-h1 {
-    color: #fff;
+.title {
+    border-radius: 0.25rem;
+    color: #212529;
+    font-weight: 500;
+    font-size: 2.5rem;
+    display: flex;
+    width: 800px;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    height: 100px;
 }
+
 .app {
     background-image: url('../../static/got.jpeg');
     background-repeat: no-repeat;
