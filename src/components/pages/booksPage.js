@@ -4,7 +4,7 @@ import ErrorMessage from '../errorMessage/errorMessage';
 import GotService from '../../services/gotService';
 import {withRouter} from 'react-router-dom';
 
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 const BooksPage = (props) => {
 
