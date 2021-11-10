@@ -36,8 +36,8 @@ const HousesPage = () => {
             getData={gotService.getHouse} >
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>
-                <Field field='titles' label='Titles'/>
-                <Field field='ancestralWeapons' label='Ancestral Weapons'/>
+                <Field field='coatOfArms' label='Coat of Arms'/>
+                <Field field='founded' label='Founded'/>
             </ItemDetails>
         )
 

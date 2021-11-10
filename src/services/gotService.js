@@ -72,8 +72,8 @@ export default class GotService {
             name: this.isSet(house.name),
             region: this.isSet(house.region),
             words: this.isSet(house.words),
-            titles: this.isSet(house.titles),
-            ancestralWeapons: this.isSet(house.ancestralWeapons)
+            coatOfArms: this.isSet(house.coatOfArms),
+            founded: this.isSet(house.founded)
         };
     }
     

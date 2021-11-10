@@ -35,8 +35,6 @@ const ItemList = (props) => {
                         :
                         () => props.onItemSelected(1 + i)
                     }>
-                    {/* onClick={() => props.onItemSelected(41 + i)}>
-                    onClick={() => props.onItemSelected(1 + i)}> */}
                     {label}
                 </li>
             )
