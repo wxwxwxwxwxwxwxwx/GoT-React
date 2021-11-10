@@ -1,47 +1,39 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ItemList from '../itemList/itemList';
 import ItemDetails from '../itemDetails/itemDetails';
 import Field from '../itemDetails/field';
 import ErrorMessage from '../errorMessage/errorMessage';
-import gotService from '../../services/gotService';
+import GotService from '../../services/gotService';
 import RowBlock from '../rowBlock/rowBlock';
 
-export default class HousesPage extends Component {
-    gotService = new gotService();
+import {useState} from 'react';
 
-    state = {
-        selectedHouse: null,
-        error: false
+const HousesPage = () => {
+    const gotService = new GotService();
+
+    const [selectedHouse, setSelectedHouse] = useState(null);
+    const [error, setError] = useState(false);
+
+    const onItemSelected = (id) => {
+        setSelectedHouse(id);
     }
 
-    onItemSelected = (id) => {
-        this.setState({
-            selectedHouse: id
-        })
-    }
-
-    componentDidCatch() {
-        this.setState({
-            error: true
-        })
-    }
-
-    render() {
-        if (this.state.error) {
+    try {
+        if (error) {
             return <ErrorMessage/>
         }
 
         const itemList = (
             <ItemList 
-                onItemSelected={this.onItemSelected}
-                getData={this.gotService.getAllHouses}
+                onItemSelected={onItemSelected}
+                getData={gotService.getAllHouses}
                 renderItem={({name}) => name}/>
         )
 
         const itemDetails = (
             <ItemDetails
-            itemId={this.state.selectedHouse}
-            getData={this.gotService.getHouse} >
+            itemId={selectedHouse}
+            getData={gotService.getHouse} >
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>
                 <Field field='titles' label='Titles'/>
@@ -52,5 +44,9 @@ export default class HousesPage extends Component {
         return (
            <RowBlock left={itemList} right={itemDetails} />
         )
+    } catch (error) {
+        setError(true)
     }
 }
+
+export default HousesPage;
