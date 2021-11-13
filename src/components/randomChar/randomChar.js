@@ -8,11 +8,9 @@ import {useState, useEffect} from 'react';
 
 const RandomChar = () => {
 
-    const gotService = new GotService();
+    const {loading, error, getCharacter} = GotService();
 
     const [char, setChar] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
 
     useEffect(() => {
         updateChar();
@@ -20,19 +18,12 @@ const RandomChar = () => {
 
     const onCharLoaded = (char) => {
         setChar(char);
-        setLoading(false);
-    }
-
-    const onError = () => {
-        setError(true)
-        setLoading(false)
     }
 
     const updateChar = () => {
         const id = Math.floor(Math.random()*3000 + 5);
-        gotService.getCharacter(id)
+        getCharacter(id)
             .then(onCharLoaded)
-            .catch(onError)
     }
 
     const errorMessage = error ? <ErrorMessage/> : null;
