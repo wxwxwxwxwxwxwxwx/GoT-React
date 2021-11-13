@@ -1,48 +1,41 @@
-export default class GotService {
-    constructor() {
-        this._apiBase = 'https://www.anapioficeandfire.com/api';
+import {useHttp} from '../hooks/http.hook';
+
+const GotService = () => {
+    const {loading, request, error} = useHttp();
+
+    const _apiBase = 'https://www.anapioficeandfire.com/api';
+
+    const getAllBooks = async () => {
+        const res = await request(`/books/`);
+        return res.map(_transformBook);
+    }
+    
+    const getBook = async (id) => {
+        const book = await request(`/books/${id}/`);
+        return _transformBook(book);
+    }
+    
+    const getAllCharacters = async () => {
+        const res = await request(`/characters?page=5&pageSize=10`);
+        return res.map(_transformCharacter);
+    }
+    
+    const getCharacter = async (id) => {
+        const character = await request(`/characters/${id}`);
+        return _transformCharacter(character);
+    }
+    
+    const getAllHouses = async () => {
+        const res = await request(`/houses/`);
+        return res.map(_transformHouse);
+    }
+    
+    const getHouse = async (id) => {
+        const house = await request(`/houses/${id}/`);
+        return _transformHouse(house);
     }
 
-    getResource = async (url) => {
-        const res = await fetch(`${this._apiBase}${url}`);
-    
-        if (!res.ok) {
-          throw new Error(`Could not fetch ${url}` + `, received ${res.status}`);
-        }
-        return await res.json();
-    }
-
-    getAllBooks = async () => {
-        const res = await this.getResource(`/books/`);
-        return res.map(this._transformBook);
-    }
-    
-    getBook = async (id) => {
-        const book = await this.getResource(`/books/${id}/`);
-        return this._transformBook(book);
-    }
-    
-    getAllCharacters = async () => {
-        const res = await this.getResource(`/characters?page=5&pageSize=10`);
-        return res.map(this._transformCharacter);
-    }
-    
-    getCharacter = async (id) => {
-        const character = await this.getResource(`/characters/${id}`);
-        return this._transformCharacter(character);
-    }
-    
-    getAllHouses = async () => {
-        const res = await this.getResource(`/houses/`);
-        return res.map(this._transformHouse);
-    }
-    
-    getHouse = async (id) => {
-        const house = await this.getResource(`/houses/${id}/`);
-        return this._transformHouse(house);
-    }
-
-    isSet(data) {
+    const isSet = (data) => {
         if (data) {
             return data
         } else {
@@ -50,40 +43,44 @@ export default class GotService {
         }
     }
 
-    _extractId = (item) => {
+    const _extractId = (item) => {
         const idRegExp = /\/([0-9]*)$/;
         return item.url.match(idRegExp)[1];
     }
 
-    _transformCharacter = (char) => {
+    const _transformCharacter = (char) => {
         return {
-            id: this._extractId(char),
-            name: this.isSet(char.name),
-            gender: this.isSet(char.gender),
-            born: this.isSet(char.born),
-            died: this.isSet(char.died), 
-            culture: this.isSet(char.culture)
+            id: _extractId(char),
+            name: isSet(char.name),
+            gender: isSet(char.gender),
+            born: isSet(char.born),
+            died: isSet(char.died), 
+            culture: isSet(char.culture)
         };
     }
 
-    _transformHouse = (house) => {
+    const _transformHouse = (house) => {
         return {
-            id: this._extractId(house),
-            name: this.isSet(house.name),
-            region: this.isSet(house.region),
-            words: this.isSet(house.words),
-            coatOfArms: this.isSet(house.coatOfArms),
-            founded: this.isSet(house.founded)
+            id: _extractId(house),
+            name: isSet(house.name),
+            region: isSet(house.region),
+            words: isSet(house.words),
+            coatOfArms: isSet(house.coatOfArms),
+            founded: isSet(house.founded)
         };
     }
     
-    _transformBook = (book) => {
+    const _transformBook = (book) => {
         return {
-            id: this._extractId(book),
-            name: this.isSet(book.name),
-            numberOfPages: this.isSet(book.numberOfPages),
-            publisher: this.isSet(book.publisher),
-            released: this.isSet(book.released)
+            id: _extractId(book),
+            name: isSet(book.name),
+            numberOfPages: isSet(book.numberOfPages),
+            publisher: isSet(book.publisher),
+            released: isSet(book.released)
         };
     }
+
+    return {loading, error, getAllBooks, getBook, getAllCharacters, getCharacter, getAllHouses, getHouse}
 }
+
+export default GotService;
