@@ -11,24 +11,20 @@ export const useHttp = () => {
         try {
             const response = await fetch(url, {method, body, headers});
 
-            if (!response.ok) {
-                throw new Error(`Could not fetch ${url}` + `, received ${response.status}`);
-            }
-
             const data = await response.json();
 
             setLoading(false);
+            return data;
 
-        } catch (error) {
+        } catch (e) {
             setLoading(false);
-            setError(error.message);
-            throw error;
+            setError(e.message);
+            throw e;
         }
-
-    }, [])
+    }, []);
 
     // U can use it in marvel 404!!!
-    const clearError = useCallback(() => setError(null), [])
+    const clearError = useCallback(() => setError(null), []);
 
     return {loading, request, error, clearError}
 }

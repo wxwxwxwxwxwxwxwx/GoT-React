@@ -6,32 +6,32 @@ const GotService = () => {
     const _apiBase = 'https://www.anapioficeandfire.com/api';
 
     const getAllBooks = async () => {
-        const res = await request(`/books/`);
+        const res = await request(`${_apiBase}/books/`);
         return res.map(_transformBook);
     }
     
     const getBook = async (id) => {
-        const book = await request(`/books/${id}/`);
+        const book = await request(`${_apiBase}/books/${id}/`);
         return _transformBook(book);
     }
     
     const getAllCharacters = async () => {
-        const res = await request(`/characters?page=5&pageSize=10`);
+        const res = await request(`${_apiBase}/characters?page=5&pageSize=10`);
         return res.map(_transformCharacter);
     }
     
     const getCharacter = async (id) => {
-        const character = await request(`/characters/${id}`);
+        const character = await request(`${_apiBase}/characters/${id}`);
         return _transformCharacter(character);
     }
     
     const getAllHouses = async () => {
-        const res = await request(`/houses/`);
+        const res = await request(`${_apiBase}/houses/`);
         return res.map(_transformHouse);
     }
     
     const getHouse = async (id) => {
-        const house = await request(`/houses/${id}/`);
+        const house = await request(`${_apiBase}/houses/${id}/`);
         return _transformHouse(house);
     }
 
