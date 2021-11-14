@@ -11,7 +11,7 @@ import {useState} from 'react';
 
 const BooksPage = (props) => {
 
-    const gotService = new GotService();
+    const gotService = GotService();
 
     const [selectedBook, setSelectedBook] = useState(null);
     const [error, setError] = useState(false);

@@ -1,7 +1,7 @@
 import {useHttp} from '../hooks/http.hook';
 
 const GotService = () => {
-    const {loading, request, error} = useHttp();
+    const {loading, request, error, clearError} = useHttp();
 
     const _apiBase = 'https://www.anapioficeandfire.com/api';
 
@@ -80,7 +80,7 @@ const GotService = () => {
         };
     }
 
-    return {loading, error, getAllBooks, getBook, getAllCharacters, getCharacter, getAllHouses, getHouse}
+    return {loading, error, getAllBooks, getBook, getAllCharacters, getCharacter, getAllHouses, getHouse, clearError}
 }
 
 export default GotService;

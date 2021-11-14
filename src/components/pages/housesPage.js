@@ -9,7 +9,7 @@ import RowBlock from '../rowBlock/rowBlock';
 import {useState} from 'react';
 
 const HousesPage = () => {
-    const gotService = new GotService();
+    const gotService = GotService();
 
     const [selectedHouse, setSelectedHouse] = useState(null);
     const [error, setError] = useState(false);

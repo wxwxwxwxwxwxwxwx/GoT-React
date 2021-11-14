@@ -9,7 +9,7 @@ import RowBlock from '../rowBlock/rowBlock';
 import {useState} from 'react';
 
 const CharacterPage = () => {
-    const gotService = new GotService();
+    const gotService = GotService();
 
     const [selectedChar, setSelectedChar] = useState(null);
     const [error, setError] = useState(false);

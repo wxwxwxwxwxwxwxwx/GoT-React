@@ -1,10 +1,10 @@
 import React from 'react';
-import gotService from '../../services/gotService';
+import GotService from '../../services/gotService';
 import ItemDetails from '../itemDetails/itemDetails';
 import Field from '../itemDetails/field';
 
 const BooksItem = (props) => {
-    gotService = new gotService();
+    const gotService = GotService();
 
     return (
         <ItemDetails

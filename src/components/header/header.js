@@ -12,19 +12,13 @@ const Header = () => {
             </h3>
             <ul className="header-list">
                 <li>
-                    <a>
-                        <Link to='/characters/'>Characters</Link>
-                    </a>
+                    <Link to='/characters/'>Characters</Link>
                 </li>
                 <li>
-                    <a>
-                        <Link to='/houses/'>Houses</Link>
-                    </a>
+                    <Link to='/houses/'>Houses</Link>
                 </li>
                 <li>
-                    <a>
-                        <Link to='/books/'>Books</Link>   
-                    </a>
+                    <Link to='/books/'>Books</Link>   
                 </li>
             </ul>
         </div>

@@ -21,6 +21,7 @@ const App = () => {
     const toggleRandomChar = () => {
         setShowRandomChar(showRandomChar => !showRandomChar)
     }
+
     
     const char = showRandomChar ? <RandomChar/> : null;
 
@@ -43,14 +44,14 @@ const App = () => {
                             onClick={toggleRandomChar}>Toggle random character</button>
                         </Col>
                     </Row>
-                    {/* <Route path='/' component={() => <div className='title'>Choose characters/houses/book, please</div>} exact/>
+                    <Route path='/' component={() => <div className='title'>Choose characters/houses/book, please</div>} exact/>
                     <Route path='/characters' component={CharacterPage} />
                     <Route path='/books' component={BooksPage} exact/>
                     <Route path='/books/:id' render={({match}) => {
                         const {id} = match.params;
                         return <BooksItem bookId={id}/>
                     }}/>
-                    <Route path='/houses' component={HousesPage} /> */}
+                    <Route path='/houses' component={HousesPage} />
                 </Container>
             </div>
         </Router>

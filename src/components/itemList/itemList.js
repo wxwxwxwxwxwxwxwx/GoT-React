@@ -38,7 +38,7 @@ const ItemList = (props) => {
                     {label}
                 </li>
             )
-        })
+        }) 
     }
 
     if (error) {

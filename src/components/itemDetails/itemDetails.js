@@ -1,10 +1,12 @@
 import {useState, useEffect} from 'react';
 
+import GotService from '../../services/gotService';
 import React from 'react';
 import './itemDetails.css';
 
 const ItemDetails = (props) => {
 
+    const {clearError} = GotService();
     const [item, setItem] = useState(null);
 
     useEffect(() => {
@@ -23,6 +25,7 @@ const ItemDetails = (props) => {
             return;
         }
 
+        clearError();
         getData(itemId)
             .then((data) => {
                 setItem(data);

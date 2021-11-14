@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react';
 
 const RandomChar = () => {
 
-    const {loading, error, getCharacter} = GotService();
+    const {loading, error, getCharacter, clearError} = GotService();
 
     const [char, setChar] = useState({});
 
@@ -21,6 +21,7 @@ const RandomChar = () => {
     }
 
     const updateChar = () => {
+        clearError();
         const id = Math.floor(Math.random()*3000 + 5);
         getCharacter(id)
             .then(onCharLoaded)
